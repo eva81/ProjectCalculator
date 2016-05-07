@@ -1,3 +1,8 @@
+package calculator;
+import javax.script.ScriptEngine;
+import javax.script.ScriptEngineManager;
+import javax.script.ScriptException;
+
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -34,9 +39,7 @@ public class calculator extends Application{
 		t.setPrefWidth(240);
 		t.setPrefHeight(50);
 		HBox r2 =new HBox();
-		
 		Button n1 = new Button("1");
-	//	n1.setStyle("-fx-border-color:green");
 		n1.setPrefWidth(40);
 		n1.setPrefHeight(30);
 		Button n2 = new Button("2");
@@ -128,9 +131,9 @@ public class calculator extends Application{
 	    n8.setOnAction(e -> setnum(n8.getText()));
 	    n9.setOnAction(e -> setnum(n9.getText()));
 	    n0.setOnAction(e -> setnum(n0.getText()));
-	    s4.setOnAction(e -> setsym(s4.getText()));
-	    s7.setOnAction(e -> setsym(s7.getText()));
-	    s0.setOnAction(e -> setsym(s0.getText()));
+	    s4.setOnAction(e -> setnum(s4.getText()));
+	    s7.setOnAction(e -> setnum(s7.getText()));
+	    s0.setOnAction(e -> setnum(s0.getText()));
 	    s11.setOnAction(e -> result());
 		panee.getChildren().addAll(r1,r2,r3,r4,r5);
 		  Scene scene = new Scene(panee, 240, 170);
@@ -151,29 +154,19 @@ public class calculator extends Application{
 			 String s=t.getText()+a;
 			 t.setText(s);
 		  }
-		  public void result ()
+		  public void result () 
 		  {
-		  double sum=0.0;
-		  for (int i=0;i<text.length;i++){
-			  switch (sym[i]){
-					  case "+":
-						  sum+=text[i];
-						  break;
-					  case "-":
-						  sum-=text[i];
-						  break;
-					  case "*":
-						  sum*=text[i];
-						  break;
-					  case "/":
-						  sum/=text[i];
-						  break;
-					default : 
-						sum=0.0;
-						break;
-			  }}
-			  
-			  t.setText(String.format("%6.2f",sum));
+			  ScriptEngineManager manager = new ScriptEngineManager();
+			  ScriptEngine engine = manager.getEngineByName("js");
+			  Object result;
+			try {
+				result = engine.eval(t.getText());
+				  t.setText(result.toString());
+			} catch (ScriptException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 		  }
 		  /**
 		   * The main method is only needed for the IDE with limited
@@ -186,5 +179,3 @@ public class calculator extends Application{
             
             
 }
-
-
