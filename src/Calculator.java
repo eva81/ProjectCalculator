@@ -131,24 +131,25 @@ public class calculator extends Application{
 	    n8.setOnAction(e -> setnum(n8.getText()));
 	    n9.setOnAction(e -> setnum(n9.getText()));
 	    n0.setOnAction(e -> setnum(n0.getText()));
-	    s4.setOnAction(e -> setnum(s4.getText()));
-	    s7.setOnAction(e -> setnum(s7.getText()));
 	    s0.setOnAction(e -> setnum(s0.getText()));
+	    s1.setOnAction(e -> setnum(s1.getText()));
+	    s2.setOnAction(e -> setnum(s2.getText()));
+	    s3.setOnAction(e -> setnum(s3.getText()));
+	    s4.setOnAction(e -> setnum(s4.getText()));
+	    s5.setOnAction(e -> setnum(s5.getText()));
+	    s6.setOnAction(e -> setnum(s6.getText()));
+	    s7.setOnAction(e -> setnum(s7.getText()));
+	    s8.setOnAction(e -> setnum(s8.getText()));
+	    s9.setOnAction(e -> setnum(s9.getText()));
 	    s11.setOnAction(e -> result());
-		panee.getChildren().addAll(r1,r2,r3,r4,r5);
+		   panee.getChildren().addAll(r1,r2,r3,r4,r5);
 		  Scene scene = new Scene(panee, 240, 170);
 		    primaryStage.setTitle("QUIZ"); // Set the stage title
 		    primaryStage.setScene(scene); // Place the scene in the stage
 		    primaryStage.show(); // Display the stage
 		    primaryStage.setResizable(false);
 		  }
-		  public void setsym (String s)
-		  {
-			  text[ii]=Double.parseDouble(t.getText());
-			  t.clear();
-			  sym[ii]=s;
-			  ii++;
-		  }
+	
 		  public void setnum (String a)
 		  {
 			 String s=t.getText()+a;
